@@ -8,10 +8,10 @@ public class LongbowCtrl : MonoBehaviour
     [Header("搖桿")]
     public GameObject VisualJoyStick;
     JoyStick joyStick;
-    [Header("玩家物件"), SerializeField]
-    private Transform longbow;
     [Header("玩家動畫控制器"), SerializeField]
     private Animator longbowAnimator;
+    [Header("玩家物件"), SerializeField]
+    private Transform longbow;
     [Header("切換速度"), Range(0.0f, 5.0f)]
     public float switchSpeed = 1.0f;//預設一秒後切換
     [Header("玩家移動速度")]
@@ -25,6 +25,8 @@ public class LongbowCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        longbowAnimator = transform.GetChild(0).GetComponent<Animator>();//自動抓取
+        longbow = transform.GetChild(0).GetComponent<Transform>();//自動抓取
         moving = false;
         longbowAnimator.SetBool("Walk", false);
         longbowAnimator.SetBool("Run", false);
@@ -88,4 +90,5 @@ public class LongbowCtrl : MonoBehaviour
         moving = false;
     }
 }
+
 

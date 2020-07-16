@@ -129,7 +129,7 @@ public class JoyStick : MonoBehaviour
     /// </summary>
 	private void RestJoyStick()
     {
-        joyStickVec = Vector2.zero;//
+        joyStickVec = Vector2.zero;
         Stick.transform.position = this.transform.position;
         PrintJoyStickVec(Vector3.zero);
     }
