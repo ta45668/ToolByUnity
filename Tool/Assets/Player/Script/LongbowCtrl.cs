@@ -7,7 +7,7 @@ public class LongbowCtrl : MonoBehaviour
     #region 弓箭角色控制器
     [Header("搖桿")]
     public GameObject VisualJoyStick;
-    JoyStick joyStick;
+    JoyStickIII joyStick;
     [Header("玩家動畫控制器"), SerializeField]
     private Animator longbowAnimator;
     [Header("玩家物件"), SerializeField]
@@ -30,19 +30,19 @@ public class LongbowCtrl : MonoBehaviour
         moving = false;
         longbowAnimator.SetBool("Walk", false);
         longbowAnimator.SetBool("Run", false);
-        joyStick = VisualJoyStick.GetComponent<JoyStick>();//取得程式碼(JoyStick)的資料
+        joyStick = VisualJoyStick.GetComponent<JoyStickIII>();//取得程式碼(JoyStick)的資料
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) == false)
+        if (!joyStick.isTouch)
         {
             ResetData();
             return;
         }
         else
-        { 
+        {
             Move();
         }
     }
@@ -90,5 +90,3 @@ public class LongbowCtrl : MonoBehaviour
         moving = false;
     }
 }
-
-
